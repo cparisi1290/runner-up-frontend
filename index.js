@@ -3,7 +3,7 @@ const endPoint = "http://localhost:3000/api/v1/races"
 
 // EVENT LISTENERS
 document.addEventListener('DOMContentLoaded', () => {
-    fetchRaces()
+    createSearchForm();
 })
 
 // FUNCTIONS
@@ -50,4 +50,30 @@ function renderRaces(races) {
         description.innerHTML = races.attributes.description;
         div.appendChild(description);
     })
+}
+const createSearchForm = () => {
+    // CREATE FORM
+    const body = document.body
+
+    // template literals to follow html and append
+    body.innerHTML += 
+    `
+        <div id="search-form">
+            <input type="text" id="search">
+            <button id="search-btn">Search</button>
+        </div>
+    `
+
+    let searchBtn = document.getElementById("search-btn") 
+    searchBtn.addEventListener("click", processSearchQuery)
+}
+
+const processSearchQuery = () => {
+    // GET VALUE OF INPUT
+    let query = document.getElementById("search").value
+
+    // FETCH REQUEST
+    fetch(`http://127.0.0.1:3000/api/v1/search/${query}`)
+        .then(resp => resp.json())
+        .then(themes => console.log(themes))
 }
