@@ -25,10 +25,6 @@ function renderRaces(races) {
         cityState.innerText = `${races.attributes.city}, ${races.attributes.state}`
         div.appendChild(cityState);
 
-        // const state = document.createElement("p");
-        // state.innerHTML = races.attributes.state;
-        // div.appendChild(state);
-
         // const raceDate = document.createElement("p");
         // raceDate.innerHTML = races.attributes.race_date;
         // div.appendChild(raceDate);
